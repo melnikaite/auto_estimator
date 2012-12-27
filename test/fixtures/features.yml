@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  person: MyString
+  optimistic: 1
+  most_likely: 1
+  pessimistic: 1
+  estimate_id: 1
+
+two:
+  title: MyString
+  person: MyString
+  optimistic: 1
+  most_likely: 1
+  pessimistic: 1
+  estimate_id: 1
