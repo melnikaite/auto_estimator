@@ -1,0 +1,11 @@
+<h1>Projects</h1>
+
+<ul>
+  <% @projects.each do |project| %>
+    <li><%= link_to project.title, project_path(project) %> <%= link_to "Edit", edit_project_path(project) %> <%= link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you sure?" %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create", new_project_path %>
+
+<%= will_paginate @projects %>

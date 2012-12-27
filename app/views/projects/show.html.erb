@@ -1,0 +1,6 @@
+<h1><%= @project.title %></h1>
+
+<div><%= @project.description %></div>
+
+<div><%= link_to "Edit", edit_project_path(@project) %></div>
+<div><%= link_to "Delete", project_path(@project), :method => :delete, :confirm => "Are you sure?" %></div>
