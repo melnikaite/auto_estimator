@@ -1,0 +1,9 @@
+<li data-id="<%= attachment.id %>">
+  <%= link_to attachment.title.blank? ? attachment.file_name : attachment.title, attachment_path(attachment), :class => "#{"obsolete" if attachment.state == -1}" %>
+  <%= link_to "Delete", attachment_path(attachment), :method => :delete, :confirm => "Are you sure?", :remote => true %>
+  <% if attachment.state == -1 %>
+    <%= link_to "Actual", attachment_path(attachment, :state => 0), :method => :put, :remote => true %>
+  <% else %>
+    <%= link_to "Obsolete", attachment_path(attachment, :state => -1), :method => :put, :remote => true %>
+  <% end %>
+</li>

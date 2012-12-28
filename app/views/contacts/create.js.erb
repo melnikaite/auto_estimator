@@ -1,0 +1,8 @@
+$(".flash").remove();
+<% if @contact.persisted? %>
+  $(".new_contact_form form")[0].reset();
+  $(".cancel_new_contact_button").click();
+  $(".contacts").append("<%= escape_javascript(render :partial => "contacts/contact", :locals => {:contact => @contact}) %>");
+<% else %>
+  $("body").prepend("<div class='flash error'><%= escape_javascript(@contact.errors.full_messages.join("<br />").html_safe) %></div>");
+<% end %>

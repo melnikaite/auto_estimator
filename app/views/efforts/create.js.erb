@@ -1,0 +1,8 @@
+$(".flash").remove();
+<% if @effort.persisted? %>
+  $(".new_effort_form form")[0].reset();
+  $(".cancel_new_effort_button").click();
+  $(".efforts").append("<%= escape_javascript(render :partial => "efforts/effort", :locals => {:effort => @effort}) %>");
+<% else %>
+  $("body").prepend("<div class='flash error'><%= escape_javascript(@effort.errors.full_messages.join("<br />").html_safe) %></div>");
+<% end %>

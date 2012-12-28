@@ -4,3 +4,77 @@
 
 <div><%= link_to "Edit", edit_project_path(@project) %></div>
 <div><%= link_to "Delete", project_path(@project), :method => :delete, :confirm => "Are you sure?" %></div>
+
+<h2>Contacts</h2>
+<ul class="contacts">
+  <% @contacts.each do |contact| %>
+    <%= render :partial => "contacts/contact", :locals => {:contact => contact} %>
+  <% end %>
+</ul>
+<div class="new_contact_form">
+  <%= form_for :contact, :url => contacts_path, :remote => true, :html => {:autocomplete => "off"} do |f| %>
+    <%= f.hidden_field :project_id, :value => @project.id %>
+    <div><%= f.label :first_name %></div>
+    <div><%= f.text_field :first_name %></div>
+    <div><%= f.label :last_name %></div>
+    <div><%= f.text_field :last_name %></div>
+    <div><%= f.label :email %></div>
+    <div><%= f.text_field :email %></div>
+    <div><%= f.label :skype %></div>
+    <div><%= f.text_field :skype %></div>
+    <div><%= f.submit %> <%= f.button :cancel, :class => "cancel_new_contact_button" %></div>
+  <% end %>
+</div>
+<div><%= link_to "Add", "javascript:void(0);", :class => "add_new_contact_button" %></div>
+
+<h2>Attachments</h2>
+<ul class="attachments">
+  <% @attachments.each do |attachment| %>
+    <%= render :partial => "attachments/attachment", :locals => {:attachment => attachment} %>
+  <% end %>
+</ul>
+<div class="new_attachment_form">
+  <%= form_for :attachment, :url => attachments_path, :remote => true, :html => {:autocomplete => "off"} do |f| %>
+    <%= f.hidden_field :project_id, :value => @project.id %>
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+    <div><%= f.label :file_name %></div>
+    <div><%= f.file_field :file_name %></div>
+    <div><%= f.submit %> <%= f.button :cancel, :class => "cancel_new_attachment_button" %></div>
+  <% end %>
+</div>
+<div><%= link_to "Add", "javascript:void(0);", :class => "add_new_attachment_button" %></div>
+
+<h2>Links</h2>
+<ul class="links">
+  <% @links.each do |link| %>
+    <%= render :partial => "links/link", :locals => {:link => link} %>
+  <% end %>
+</ul>
+<div class="new_link_form">
+  <%= form_for :link, :url => links_path, :remote => true, :html => {:autocomplete => "off"} do |f| %>
+    <%= f.hidden_field :project_id, :value => @project.id %>
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+    <div><%= f.label :url %></div>
+    <div><%= f.text_field :url %></div>
+    <div><%= f.submit %> <%= f.button :cancel, :class => "cancel_new_link_button" %></div>
+  <% end %>
+</div>
+<div><%= link_to "Add", "javascript:void(0);", :class => "add_new_link_button" %></div>
+
+<h2>Estimates</h2>
+<ul class="estimates">
+  <% @estimates.each do |estimate| %>
+    <%= render :partial => "estimates/estimate", :locals => {:estimate => estimate} %>
+  <% end %>
+</ul>
+<div class="new_estimate_form">
+  <%= form_for :estimate, :url => estimates_path, :remote => true, :html => {:autocomplete => "off"} do |f| %>
+    <%= f.hidden_field :project_id, :value => @project.id %>
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+    <div><%= f.submit %> <%= f.button :cancel, :class => "cancel_new_estimate_button" %></div>
+  <% end %>
+</div>
+<div><%= link_to "Add", "javascript:void(0);", :class => "add_new_estimate_button" %></div>

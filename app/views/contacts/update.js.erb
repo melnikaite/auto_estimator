@@ -1,0 +1,2 @@
+$(".flash").remove();
+$(".contacts [data-id='<%= @contact.id %>']").replaceWith("<%= escape_javascript(render :partial => "contacts/contact", :locals => {:contact => @contact}) %>");

@@ -1,0 +1,8 @@
+$(".flash").remove();
+<% if @link.persisted? %>
+  $(".new_link_form form")[0].reset();
+  $(".cancel_new_link_button").click();
+  $(".links").append("<%= escape_javascript(render :partial => "links/link", :locals => {:link => @link}) %>");
+<% else %>
+  $("body").prepend("<div class='flash error'><%= escape_javascript(@link.errors.full_messages.join("<br />").html_safe) %></div>");
+<% end %>

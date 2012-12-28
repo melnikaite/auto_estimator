@@ -1,0 +1,4 @@
+<li data-id="<%= feature.id %>">
+  <%= link_to feature.title, feature_path(feature) %>
+  <%= link_to "Delete", feature_path(feature), :method => :delete, :confirm => "Are you sure?", :remote => true %>
+</li>

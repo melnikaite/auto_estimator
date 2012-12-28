@@ -36,6 +36,13 @@ class ProjectsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @contacts = @project.contacts
+    @attachments = @project.attachments
+    @links = @project.links
+    @estimates = @project.estimates
+  end
+
   private
 
   def find_project

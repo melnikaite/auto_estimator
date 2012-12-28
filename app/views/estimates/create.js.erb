@@ -1,0 +1,8 @@
+$(".flash").remove();
+<% if @estimate.persisted? %>
+  $(".new_estimate_form form")[0].reset();
+  $(".cancel_new_estimate_button").click();
+  $(".estimates").append("<%= escape_javascript(render :partial => "estimates/estimate", :locals => {:estimate => @estimate}) %>");
+<% else %>
+  $("body").prepend("<div class='flash error'><%= escape_javascript(@estimate.errors.full_messages.join("<br />").html_safe) %></div>");
+<% end %>

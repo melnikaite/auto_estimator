@@ -1,0 +1,8 @@
+$(".flash").remove();
+<% if @attachment.persisted? %>
+  $(".new_attachment_form form")[0].reset();
+  $(".cancel_new_attachment_button").click();
+  $(".attachments").append("<%= escape_javascript(render :partial => "attachments/attachment", :locals => {:attachment => @attachment}) %>");
+<% else %>
+  $("body").prepend("<div class='flash error'><%= escape_javascript(@attachment.errors.full_messages.join("<br />").html_safe) %></div>");
+<% end %>

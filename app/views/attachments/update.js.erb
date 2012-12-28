@@ -1,0 +1,2 @@
+$(".flash").remove();
+$(".attachments [data-id='<%= @attachment.id %>']").replaceWith("<%= escape_javascript(render :partial => "attachments/attachment", :locals => {:attachment => @attachment}) %>");
