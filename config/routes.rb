@@ -2,7 +2,10 @@ AutoEstimator::Application.routes.draw do
   resources :attachments
   resources :contacts
   resources :efforts
-  resources :estimates
+  resources :estimates do
+    post :import
+    get :export
+  end
   resources :features
   resources :links
   resources :projects

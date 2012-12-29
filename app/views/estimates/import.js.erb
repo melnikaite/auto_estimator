@@ -1,0 +1,6 @@
+$(".flash").remove();
+<% @features.each do |feature| %>
+  $(".features").append("<%= escape_javascript(render(:partial => "features/feature", :locals => {:feature => feature}).force_encoding("UTF-8")) %>");
+  AE.initialize_feature_ranges($(".features .range").last());
+<% end %>
+$("body").prepend("<div class='flash notice'>Imported <%= pluralize(@features.length, "feature") %></div>");

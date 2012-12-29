@@ -40,5 +40,17 @@ var AE = {
     values.push($(li).find(".pessimistic").text());
     $(this).slider("values", values);
     $(li).attr("data-initialized", true);
+  },
+  initialize_feature_ranges: function(ranges) {
+    $.each(ranges, function(){
+      $(this).slider({
+        slide: AE.update_feature_range,
+        change: AE.save_feature_range,
+        create: AE.set_values_for_feature_range,
+        min: 0,
+        max: 40,
+        values: [0, 0, 0]
+      });
+    });
   }
 }

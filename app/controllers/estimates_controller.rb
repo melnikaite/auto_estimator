@@ -14,14 +14,17 @@ class EstimatesController < ApplicationController
   end
 
   def import
+    @features = @estimate.import(params[:estimate][:import])
   end
 
   def export
+    csv_string = @estimate.export
+    send_data csv_string, :filename => "#{@estimate.title} #{@estimate.updated_at}.csv"
   end
 
   private
 
   def find_estimate
-    @estimate = Estimate.find_by_id(params[:id]) || not_found
+    @estimate = Estimate.find_by_id(params[:id] || params[:estimate_id]) || not_found
   end
 end

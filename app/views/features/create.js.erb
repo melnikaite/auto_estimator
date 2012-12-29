@@ -3,6 +3,7 @@ $(".flash").remove();
   $(".new_feature_form form")[0].reset();
   $(".cancel_new_feature_button").click();
   $(".features").append("<%= escape_javascript(render :partial => "features/feature", :locals => {:feature => @feature}) %>");
+  AE.initialize_feature_ranges($(".features .range").last());
 <% else %>
   $("body").prepend("<div class='flash error'><%= escape_javascript(@feature.errors.full_messages.join("<br />").html_safe) %></div>");
 <% end %>

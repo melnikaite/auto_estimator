@@ -1,6 +1,6 @@
 <li data-id="<%= feature.id %>">
   <div>
-    <%= link_to feature.title, feature_path(feature) %>
+    <%= feature.title %>
     <span class="optimistic"><%= feature.optimistic.to_i %></span>h
     <span class="most_likely"><%= feature.most_likely.to_i %></span>h
     <span class="pessimistic"><%= feature.pessimistic.to_i %></span>h

@@ -1,7 +1,11 @@
 <h1><%= @estimate.title %></h1>
 
-<div><%= link_to "Import", "javascript:void(0);" %></div>
-<div><%= link_to "Export", "javascript:void(0);" %></div>
+<%= form_for :estimate, :url => estimate_import_path(@estimate.id), :remote => true, :html => {:autocomplete => "off"} do |f| %>
+  <%= f.label :import %>
+  <%= f.file_field :import %>
+  <%= f.submit %>
+<% end %>
+<div><%= link_to "Export", estimate_export_path(@estimate.id) %></div>
 
 <h2>Features</h2>
 <ul class="features">
