@@ -14,21 +14,21 @@ var AE = {
   },
   update_feature_range: function (event, ui) {
     var li = $(this).closest("li");
-    $(li).find(".optimistic").text(ui.values[0]);
+    $(li).find(".optimistic").text(ui.values[2]);
     $(li).find(".most_likely").text(ui.values[1]);
-    $(li).find(".pessimistic").text(ui.values[2]);
+    $(li).find(".pessimistic").text(ui.values[0]);
   },
   save_feature_range: function (event, ui) {
     var li = $(this).closest("li");
     var id = $(li).attr("data-id");
-    if(!$(li).attr("data-initialized")) return;
+    if (!$(li).attr("data-initialized")) return;
     $.ajax({
       url: "/features/" + id,
       type: "put",
       data: {
-        optimistic: ui.values[0],
+        optimistic: ui.values[2],
         most_likely: ui.values[1],
-        pessimistic: ui.values[2]
+        pessimistic: ui.values[0]
       }
     });
   },
@@ -41,8 +41,8 @@ var AE = {
     $(this).slider("values", values);
     $(li).attr("data-initialized", true);
   },
-  initialize_feature_ranges: function(ranges) {
-    $.each(ranges, function(){
+  initialize_feature_ranges: function (ranges) {
+    $.each(ranges, function () {
       $(this).slider({
         slide: AE.update_feature_range,
         change: AE.save_feature_range,
@@ -51,6 +51,9 @@ var AE = {
         max: 40,
         values: [0, 0, 0]
       });
+      $(this).find("a").tsort('', {sortFunction: function (a, b) {
+        return 1;
+      }});
     });
   }
 }
