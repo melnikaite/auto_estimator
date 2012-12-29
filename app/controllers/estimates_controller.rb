@@ -1,5 +1,5 @@
 class EstimatesController < ApplicationController
-  before_filter :find_estimate, :only => [:update, :destroy]
+  before_filter :find_estimate, :only => [:update, :destroy, :show, :import, :export]
 
   def create
     @estimate = Estimate.create(params[:estimate])
@@ -7,6 +7,16 @@ class EstimatesController < ApplicationController
 
   def destroy
     @estimate.destroy
+  end
+
+  def show
+    @features = @estimate.features
+  end
+
+  def import
+  end
+
+  def export
   end
 
   private

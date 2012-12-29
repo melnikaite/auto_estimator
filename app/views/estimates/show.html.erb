@@ -1,0 +1,22 @@
+<h1><%= @estimate.title %></h1>
+
+<div><%= link_to "Import", "javascript:void(0);" %></div>
+<div><%= link_to "Export", "javascript:void(0);" %></div>
+
+<h2>Features</h2>
+<ul class="features">
+  <% @features.each do |feature| %>
+    <%= render :partial => "features/feature", :locals => {:feature => feature} %>
+  <% end %>
+</ul>
+<div class="new_feature_form">
+  <%= form_for :feature, :url => features_path, :remote => true, :html => {:autocomplete => "off"} do |f| %>
+    <%= f.hidden_field :estimate_id, :value => @estimate.id %>
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+    <div><%= f.label :person %></div>
+    <div><%= f.text_field :person %></div>
+    <div><%= f.submit %> <%= f.button :cancel, :class => "cancel_new_feature_button" %></div>
+  <% end %>
+</div>
+<div><%= link_to "Add", "javascript:void(0);", :class => "add_new_feature_button" %></div>

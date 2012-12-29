@@ -1,0 +1,21 @@
+<h1><%= @feature.title %></h1>
+
+<h2>Efforts</h2>
+<ul class="efforts">
+  <% @efforts.each do |effort| %>
+    <%= render :partial => "efforts/effort", :locals => {:effort => effort} %>
+  <% end %>
+</ul>
+<div class="new_effort_form">
+  <%= form_for :effort, :url => efforts_path, :remote => true, :html => {:autocomplete => "off"} do |f| %>
+    <%= f.hidden_field :feature_id, :value => @feature.id %>
+    <div><%= f.label :default_value %></div>
+    <div><%= f.text_field :default_value %> h</div>
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+    <div><%= f.label :coefficient %></div>
+    <div><%= f.text_field :coefficient %></div>
+    <div><%= f.submit %> <%= f.button :cancel, :class => "cancel_new_effort_button" %></div>
+  <% end %>
+</div>
+<div><%= link_to "Add", "javascript:void(0);", :class => "add_new_effort_button" %></div>

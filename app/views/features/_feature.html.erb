@@ -1,4 +1,11 @@
 <li data-id="<%= feature.id %>">
-  <%= link_to feature.title, feature_path(feature) %>
-  <%= link_to "Delete", feature_path(feature), :method => :delete, :confirm => "Are you sure?", :remote => true %>
+  <div>
+    <%= link_to feature.title, feature_path(feature) %>
+    <span class="optimistic"><%= feature.optimistic.to_i %></span>h
+    <span class="most_likely"><%= feature.most_likely.to_i %></span>h
+    <span class="pessimistic"><%= feature.pessimistic.to_i %></span>h
+    <span class="person"><%= feature.person %></span>
+    <%= link_to "Delete", feature_path(feature), :method => :delete, :confirm => "Are you sure?", :remote => true %>
+  </div>
+  <div class="range"></div>
 </li>
